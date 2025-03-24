@@ -55,6 +55,18 @@ async function run() {
         res.status(500).json({ error: "Internal Server Error" });
       }
     });
+    app.get("/AfterSalahDua", async (req, res) => {
+        try {
+          const AfterSalah = await DuaDB.collection("AfterSalah")
+            .find({}, { projection: { _id: 0 } })
+            .toArray();
+          res.json(AfterSalah);
+        } catch (error) {
+          console.error("Error fetching AfterSalah:", error);
+          res.status(500).json({ error: "Internal Server Error" });
+        }
+      });
+
 
     app.get("/QuranArBnEnAudio", async (req, res) => {
       try {

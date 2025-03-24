@@ -56,6 +56,9 @@ const homePage = `
          <div class="endpoint">
             <a href="/QuranArBnEnAudio">View Full Quran</a>
         </div>
+         <div class="endpoint">
+            <a href="/AfterSalahDua">After Salah Dua</a>
+        </div>
     </div>
 </body>
 </html>
