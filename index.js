@@ -58,7 +58,7 @@ async function run() {
     app.get("/AfterSalahDua", async (req, res) => {
         try {
           const AfterSalah = await DuaDB.collection("AfterSalah")
-            .find({}, { projection: { _id: 0 } })
+            .find({}, { projection: { _id: 0,audio_link:0 } })
             .toArray();
           res.json(AfterSalah);
         } catch (error) {
