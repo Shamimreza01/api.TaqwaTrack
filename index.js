@@ -96,7 +96,7 @@ async function run() {
     app.get("/namesofAllah", async (req, res) => {
       try {
         const NamesOfAllah = await NamesOfAllahDB.collection("99NamesOfAllah")
-          .find({}, { projection: { _id: 0 } })
+          .find({})
           .toArray();
         res.json(NamesOfAllah);
       } catch (error) {
