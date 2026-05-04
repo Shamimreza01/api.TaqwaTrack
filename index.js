@@ -92,11 +92,10 @@ async function run() {
         res.status(500).json({ error: "Internal Server Error" });
       }
     });
-
     app.get("/namesofAllah", async (req, res) => {
       try {
         const NamesOfAllah = await NamesOfAllahDB.collection("99NamesOfAllah")
-          .find({})
+          .find({}, { projection: { _id: 0 } })
           .toArray();
         res.json(NamesOfAllah);
       } catch (error) {
