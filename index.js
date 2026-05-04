@@ -9,19 +9,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAaoaCk8cU4gEbZGgqfC33ImGdnCnodcIQ",
-//   authDomain: "taqwatrack-v01.firebaseapp.com",
-//   projectId: "taqwatrack-v01",
-//   storageBucket: "taqwatrack-v01.firebasestorage.app",
-//   messagingSenderId: "493027643937",
-//   appId: "1:493027643937:web:4820c99e3541a59ffd0960",
-//   measurementId: "G-0S6BMC143B",
-// };
-
-// const firebaseApp = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(firebaseApp);
-// const storage = getStorage(firebaseApp);
 
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@taqwatrack.iur9l.mongodb.net/?retryWrites=true&w=majority&appName=${process.env.APP_NAME}`;
 
@@ -97,6 +84,7 @@ async function run() {
         const NamesOfAllah = await NamesOfAllahDB.collection("99NamesOfAllah")
           .find({}, { projection: { _id: 0 } })
           .toArray();
+        console.log("working"); // Debugging log to confirm the endpoint is hit
         res.json(NamesOfAllah);
       } catch (error) {
         console.error("Error fetching 99 names of Allah:", error);
